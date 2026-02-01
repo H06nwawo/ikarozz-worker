@@ -10,7 +10,6 @@ services:
         to:
           - global: true
     env:
-      - CIVITAI_API_KEY=YOUR_CIVITAI_TOKEN_HERE
       - HUGGING_FACE_HUB_TOKEN=YOUR_HF_TOKEN_HERE
 
 profiles:

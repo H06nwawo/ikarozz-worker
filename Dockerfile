@@ -21,15 +21,15 @@ RUN git clone https://github.com/comfyanonymous/ComfyUI.git . && \
 
 RUN mkdir -p /app/models/diffusion_models && \
     mkdir -p /app/models/text_encoders && \
-    mkdir -p /app/models/vae
+    mkdir -p /app/models/vae && \
+    mkdir -p /app/models/loras
 
 COPY init_worker.sh /app/init_worker.sh
 COPY supervisord_worker.conf /etc/supervisor/conf.d/supervisord.conf
+COPY loras/ /app/models/loras/
 
 RUN chmod +x /app/init_worker.sh
 
-ARG CIVITAI_API_KEY
-ENV CIVITAI_API_KEY=${CIVITAI_API_KEY}
 ENV HUGGING_FACE_HUB_TOKEN=""
 
 EXPOSE 8188
